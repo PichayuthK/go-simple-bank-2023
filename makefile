@@ -1,6 +1,9 @@
 #
 # command for development environment
 #
+run-dev:
+	air dev
+
 docker-pg:
 	docker run --name postgres12 -p 5432:5432 -e POSTGRES_USER=root -e POSTGRES_PASSWORD=secret -d postgres:12-alpine
 
@@ -13,4 +16,4 @@ docker-pg-exec:
 #
 
 
-.PHONY: docker-pg docker-pg-exec
+.PHONY: docker-pg docker-pg-exec run-dev
