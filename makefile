@@ -10,6 +10,9 @@ docker-pg:
 docker-pg-exec:
 	docker exec -ti postgres12 psql -U root
 
+# new migration file
+migration-new:
+	migrate create -ext sql -dir ./src/db/migration -seq $(file_name)
 
 #
 # command for production environment
