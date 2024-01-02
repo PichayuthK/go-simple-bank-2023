@@ -13,6 +13,12 @@ docker-createdb:
 docker-dropdb:
 	docker exec -ti postgres12_simplebank dropdb simple_bank
 
+sqlc:
+	sqlc generate
+
+sqlc-window:
+	docker run --rm -v .:/app -w /app sqlc/sqlc generate
+
 # new migration file
 migration-new:
 	migrate create -ext sql -dir ./src/db/migration -seq $(file_name)
@@ -22,4 +28,4 @@ migration-new:
 #
 
 
-.PHONY: docker-pg docker-createdb docker-dropdb run-dev
+.PHONY: docker-pg docker-createdb docker-dropdb run-dev sqlc sqlc-window
