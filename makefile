@@ -23,9 +23,15 @@ sqlc-window:
 migration-new:
 	migrate create -ext sql -dir ./src/db/migration -seq $(file_name)
 
+migrateup:
+	migrate -path ./src/db/migration -database "postgres://root:secret@localhost:5432/simple_bank?sslmode=disable" -verbose up
+
+migratedown:
+	migrate -path ./src/db/migration -database "postgres://root:secret@localhost:5432/simple_bank?sslmode=disable" -verbose down
+
 #
 # command for production environment
 #
 
 
-.PHONY: docker-pg docker-createdb docker-dropdb run-dev sqlc sqlc-window
+.PHONY: docker-pg docker-createdb docker-dropdb run-dev sqlc sqlc-window migratedown migrateup
