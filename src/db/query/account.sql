@@ -7,7 +7,7 @@ INSERT INTO accounts (
   $1, $2, $3
 ) RETURNING *;
 
--- name: CetAccount :one
+-- name: GetAccount :one
 SELECT * FROM accounts
 WHERE id = $1 LIMIT 1;
 
@@ -20,7 +20,7 @@ OFFSET $2;
 -- name: UpdateAccount :one
 UPDATE accounts
 SET balance = $2
-WHERE id = $1;
+WHERE id = $1
 RETURNING *;
 
 -- name: DeleteAccount :exec

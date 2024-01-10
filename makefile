@@ -19,6 +19,9 @@ sqlc:
 sqlc-window:
 	docker run --rm -v .:/app -w /app sqlc/sqlc generate
 
+test:
+	go test -v -cover ./...
+
 # new migration file
 migration-new:
 	migrate create -ext sql -dir ./src/db/migration -seq $(file_name)
